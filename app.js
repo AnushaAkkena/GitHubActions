@@ -1,10 +1,12 @@
-const express = require("express");
-const app = express();
+const http = require("http");
 
-app.get("/", (req, res) => {
-  res.send("Hello from AWS via GitHub Actions 🚀");
+const PORT = 3000;
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("Hello from GitHub Actions + AWS EC2 🚀\n");
 });
 
-app.listen(3000, () => {
-  console.log("App running on port 3000");
+server.listen(PORT, () => {
+  console.log(`App running on port ${PORT}`);
 });
